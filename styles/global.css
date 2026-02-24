@@ -68,28 +68,29 @@ body {
   background-color: var(--fg-color-1);
 }
 
+/* wrapper */
 .notion-simple-table-wrapper {
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+/* table */
 .notion-simple-table {
   width: 100% !important;
   border-collapse: collapse;
 }
 
+/* cell */
 .notion-simple-table td,
 .notion-simple-table th {
-  white-space: nowrap;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  white-space: nowrap; /* important */
 }
 
-.notion-page-content {
-  overflow-x: visible !important;
-}
-
-/* ===== CODE BLOCK FIX ===== */
-pre[class*="language-"],
-code[class*="language-"] {
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
+/* dark mode */
+.dark-mode .notion-simple-table td,
+.dark-mode .notion-simple-table th {
+  border-color: #3f3f46;
 }

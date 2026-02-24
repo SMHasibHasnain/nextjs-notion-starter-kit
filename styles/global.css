@@ -68,9 +68,7 @@ body {
   background-color: var(--fg-color-1);
 }
 
-/* =======================================
-   ১. Table Fix (Mobile Scroll + Night Mode)
-   ======================================= */
+/* ===== TABLE FIX ===== */
 .notion-simple-table-wrapper {
   width: 100%;
   overflow-x: auto !important;
@@ -83,11 +81,7 @@ body {
   min-width: 100%;
 }
 
-/* IMPORTANT: parent overflow fix */
-.notion-page-content {
-  overflow-x: hidden;
-}
-
+/* prevent parent blocking scroll */
 .notion-page {
   overflow-x: hidden;
 }
@@ -96,24 +90,9 @@ body {
   overflow-x: visible !important;
 }
 
-/* =======================================
-   ২. Code Block Fix (Dark Mode Forced)
-   ======================================= */
-/* কোড ব্লককে জোর করে ডার্ক থিমে নেওয়া */
-.notion-code {
-  background-color: #1e1e1e !important; /* VS Code ডার্ক ব্যাকগ্রাউন্ড */
-  color: #d4d4d4 !important;
-  border-radius: 8px !important;
-  padding: 1rem !important;
-}
-
-/* কোড এবং টেবিলের স্ক্রলবারের ডিজাইন (দেখতে ভালো লাগবে) */
-.notion-code::-webkit-scrollbar,
-.notion-simple-table-wrapper::-webkit-scrollbar {
-  height: 8px !important;
-}
-.notion-code::-webkit-scrollbar-thumb,
-.notion-simple-table-wrapper::-webkit-scrollbar-thumb {
-  background: #52525b !important;
-  border-radius: 4px !important;
+/* ===== CODE BLOCK FIX ===== */
+pre[class*="language-"],
+code[class*="language-"] {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
 }

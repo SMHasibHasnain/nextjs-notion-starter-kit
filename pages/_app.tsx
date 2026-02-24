@@ -91,3 +91,34 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return <Component {...pageProps} />
 }
+
+const highlightCode = () => {
+  if (typeof window === 'undefined') return
+
+  setTimeout(() => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      // যদি language class না থাকে → force add
+      if (!block.className.includes('language-')) {
+        block.classList.add('language-js') // default fallback
+      }
+    })
+
+    Prism.highlightAll()
+  }, 0)
+}
+
+React.useEffect(() => {
+  function onRouteChangeComplete() {
+    highlightCode()
+  }
+
+  highlightCode()
+
+  router.events.on('routeChangeComplete', onRouteChangeComplete)
+
+  return () => {
+    router.events.off('routeChangeComplete', onRouteChangeComplete)
+  }
+}, [router.events])
+
+

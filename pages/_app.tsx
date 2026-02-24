@@ -4,16 +4,16 @@ import 'katex/dist/katex.min.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
 
-// global styles shared across the entire site
+// global styles
 import 'styles/global.css'
 
-// this might be better for dark mode
-import 'prismjs/themes/prism-okaidia.css' /* ডার্ক থিম চালু */
+// 🔥 Prism theme (better than okaidia)
+import 'prismjs/themes/prism-tomorrow.css'
 
-// global style overrides for notion
+// notion overrides
 import 'styles/notion.css'
 
-// global style overrides for prism theme (optional)
+// optional prism overrides
 import 'styles/prism-theme.css'
 
 import type { AppProps } from 'next/app'
@@ -24,10 +24,14 @@ import * as React from 'react'
 
 import Prism from 'prismjs'
 
-// SSR ক্র্যাশ ঠেকানোর জন্য শুধুমাত্র ক্লায়েন্ট-সাইডে ল্যাঙ্গুয়েজ প্যাকগুলো লোড করা হচ্ছে
+// ✅ Load languages ONLY in client (prevent SSR crash)
 if (typeof window !== 'undefined') {
   require('prismjs/components/prism-csharp')
   require('prismjs/components/prism-sql')
+  require('prismjs/components/prism-javascript')
+  require('prismjs/components/prism-typescript')
+  require('prismjs/components/prism-json')
+  require('prismjs/components/prism-bash')
 }
 
 import { bootstrap } from '@/lib/bootstrap-client'
@@ -39,6 +43,7 @@ import {
   posthogId
 } from '@/lib/config'
 
+// ✅ bootstrap only on client
 if (!isServer) {
   bootstrap()
 }
@@ -47,6 +52,11 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
+    // 🔥 Prism highlight function
+    const highlight = () => {
+      Prism.highlightAll()
+    }
+
     function onRouteChangeComplete() {
       if (fathomId) {
         Fathom.trackPageview()
@@ -55,8 +65,11 @@ export default function App({ Component, pageProps }: AppProps) {
       if (posthogId) {
         posthog.capture('$pageview')
       }
+
+      highlight() // ✅ FIX: re-highlight on page change
     }
 
+    // analytics init
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
     }
@@ -65,6 +78,10 @@ export default function App({ Component, pageProps }: AppProps) {
       posthog.init(posthogId, posthogConfig)
     }
 
+    // first load highlight
+    highlight()
+
+    // route change listener
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
     return () => {

@@ -8,11 +8,17 @@ export const Code = ({ children, className }: any) => {
     if (ref.current) {
       Prism.highlightElement(ref.current)
     }
-  }, [])
+  }, [children])
 
-  // language extract
-  const language =
-    className?.replace('lang-', '').replace('language-', '') || 'javascript'
+  let language = 'javascript'
+
+  if (className) {
+    if (className.includes('lang-')) {
+      language = className.replace('lang-', '')
+    } else if (className.includes('language-')) {
+      language = className.replace('language-', '')
+    }
+  }
 
   return (
     <pre className={`language-${language}`}>

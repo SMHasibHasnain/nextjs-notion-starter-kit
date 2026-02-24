@@ -1,9 +1,5 @@
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
-// used for code syntax highlighting (optional)
-import Prism from 'prismjs' /* <-- এই নতুন লাইনটা অ্যাড করতে হবে */
-import 'prismjs/components/prism-csharp.js'
-import 'prismjs/components/prism-sql.js'
 
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
@@ -13,8 +9,10 @@ import 'styles/global.css'
 
 // this might be better for dark mode
 import 'prismjs/themes/prism-okaidia.css' /* ডার্ক থিম চালু */
+
 // global style overrides for notion
 import 'styles/notion.css'
+
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 
@@ -23,6 +21,14 @@ import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
 import { posthog } from 'posthog-js'
 import * as React from 'react'
+
+import Prism from 'prismjs'
+
+// SSR ক্র্যাশ ঠেকানোর জন্য শুধুমাত্র ক্লায়েন্ট-সাইডে ল্যাঙ্গুয়েজ প্যাকগুলো লোড করা হচ্ছে
+if (typeof window !== 'undefined') {
+  require('prismjs/components/prism-csharp')
+  require('prismjs/components/prism-sql')
+}
 
 import { bootstrap } from '@/lib/bootstrap-client'
 import {

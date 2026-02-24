@@ -94,3 +94,13 @@ body {
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
 }
+
+/* VS Code Dark Plus Theme for Code Blocks */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-vsc-dark-plus.min.css');
+
+/* কোড ব্লকের ব্যাকগ্রাউন্ড একটু সুন্দর করার জন্য */
+.notion-code {
+  background-color: #1e1e1e !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+}

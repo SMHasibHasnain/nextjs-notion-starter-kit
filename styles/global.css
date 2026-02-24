@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+.notion {
+  font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif !important;
+}
+
+.notion-text, .notion-h1, .notion-h2, .notion-h3, .notion-list {
+  line-height: 1.6 !important;
+}
+
+
 * {
   box-sizing: border-box;
 }

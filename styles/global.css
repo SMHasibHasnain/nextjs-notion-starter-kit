@@ -68,6 +68,29 @@ body {
   background-color: var(--fg-color-1);
 }
 
+/* Notion Table Responsive Fix */
+.notion-simple-table-wrapper {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.notion-simple-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.notion-simple-table td, 
+.notion-simple-table th {
+  border: 1px solid #e2e8f0 !important;
+  padding: 10px 14px !important;
+}
+
+.dark-mode .notion-simple-table td, 
+.dark-mode .notion-simple-table th {
+  border-color: #3f3f46 !important;
+}
+
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
 }

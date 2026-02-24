@@ -68,19 +68,16 @@ body {
   background-color: var(--fg-color-1);
 }
 
-/* wrapper scroll করবে */
 .notion-simple-table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-/* table normal থাকবে */
 .notion-simple-table {
   width: 100% !important;
   border-collapse: collapse;
 }
 
-/* cell wrap prevent */
 .notion-simple-table td,
 .notion-simple-table th {
   white-space: nowrap;

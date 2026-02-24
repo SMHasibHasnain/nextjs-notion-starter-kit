@@ -68,25 +68,25 @@ body {
   background-color: var(--fg-color-1);
 }
 
-/* ===== TABLE FIX ===== */
+/* wrapper scroll করবে */
 .notion-simple-table-wrapper {
-  width: 100%;
-  overflow-x: auto !important;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+/* table normal থাকবে */
 .notion-simple-table {
-  display: table;
-  width: max-content !important;
-  min-width: 100%;
+  width: 100% !important;
+  border-collapse: collapse;
 }
 
-/* prevent parent blocking scroll */
-.notion-page {
-  overflow-x: hidden;
+/* cell wrap prevent */
+.notion-simple-table td,
+.notion-simple-table th {
+  white-space: nowrap;
 }
 
-.notion-page-content-inner {
+.notion-page-content {
   overflow-x: visible !important;
 }
 
